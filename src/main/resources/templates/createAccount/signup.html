@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Create an Account</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/pure-min.css" />
+    <link rel="stylesheet" href="/css/localStyle.css" />
+</head>
+<body>
+    <div th:replace="navbar :: navbar"></div>
+
+    <div class="pure-g">
+        <div class="pure-u-1-5 left-column"></div>
+        <div class="pure-u-3-5 content-column">
+            <!--/*@thymesVar id="userCreateForm" type="com.rsl.registrar.domain.UserCreateForm"*/-->
+            <form action="#" th:action="@{${@environment.getProperty('frontend.rest.signup')}}" th:object="${userCreateForm}" method="post" class="pure-form pure-form-aligned">
+                <fieldset>
+                    <legend>Create User (All Fields Required)</legend>
+
+                    <div class="pure-control-group">
+                        <label for="name">Name</label >
+                        <input type="text" th:field="*{name}" id="name" name="name" placeholder="Full Name" required="true"/>
+                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Empty Error</p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="phone">Phone</label >
+                        <input type="text" th:field="*{phone}" id="phone" name="phone" placeholder="1-123-456-7890" required="true"/>
+                        <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Number Error</p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="fax">Fax</label >
+                        <input type="text" th:field="*{fax}" id="fax" name="fax" placeholder="1-123-456-7890" required="true"/>
+                        <p th:if="${#fields.hasErrors('fax')}" th:errors="*{fax}">Fax Number Error</p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="organization">organization</label >
+                        <input type="text" th:field="*{organization}" id="organization" name="organization" placeholder="abc Inc." required="true"/>
+                        <p th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Organization Error</p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="addressline1">Address</label >
+                        <input type="text" th:field="*{addressline1}" id="addressline1" name="addressline1" placeholder="123 Foobar Lane" required="true"/>
+                        <p th:if="${#fields.hasErrors('addressline1')}" th:errors="*{addressline1}">Address Empty Error</p>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="addressline2"></label >
+                        <input type="text" th:field="*{addressline2}" id="addressline2" name="addressline2"/>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="addressline3"></label >
+                        <input type="text" th:field="*{addressline3}" id="addressline3" name="addressline3"/>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="city">City</label >
+                        <input type="text" th:field="*{city}" id="city" name="city" required="true"/>
+                        <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City Empty Error</p>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="stateprovince">State/Province</label >
+                        <input type="text" th:field="*{stateprovince}" id="stateprovince" name="stateprovince" required="true"/>
+                        <p th:if="${#fields.hasErrors('stateprovince')}" th:errors="*{stateprovince}">State Empty Error</p>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="postalcode">Postal Code</label >
+                        <input type="text" th:field="*{postalcode}" id="postalcode" name="postalcode" required="true"/>
+                        <p th:if="${#fields.hasErrors('postalcode')}" th:errors="*{postalcode}">Postal Code Empty Error</p>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="countrycode">Country Code</label >
+                        <input type="text" th:field="*{countrycode}" id="countrycode" name="countrycode" required="true"/>
+                        <p th:if="${#fields.hasErrors('countrycode')}" th:errors="*{countrycode}">Country Code Empty Error</p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" th:field="*{email}" id="email" name="email" placeholder="foobar@foo.com" required="true"/>
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Empty Error</p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="password">Password</label>
+                        <input type="password" th:field="*{password}" id="password" name="password" required="true"/>
+                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Empty Error</p>
+                    </div>
+
+                    <div class="pure-controls">
+                        <button type="submit" class="pure-button pure-button-primary">Create User</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="pure-u-1-5 right-column"></div>
+    </div>
+
+    <div th:replace="footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/pure-min.css" />
+    <link rel="stylesheet" href="/css/localStyle.css" />
+</head>
+<body>
+    <div th:replace="navbar :: navbar"></div>
+
+    <div class="pure-g">
+        <div class="pure-u-1-5 left-column"></div>
+        <div class="pure-u-3-5 content-column">
+            <!--/*@thymesVar id="userLoginForm" type="com.rsl.registrar.domain.UserLoginForm"*/-->
+            <form action="#" th:action="@{${@environment.getProperty('frontend.rest.login')}}" th:object="${userLoginForm}" method="post" class="pure-form pure-form-aligned">
+                <fieldset>
+                    <legend>Login</legend>
+
+                    <div class="pure-control-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" th:field="*{email}" id="email" name="email" placeholder="foobar@foo.com" required="true"/>
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Empty Error</p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="password">Password</label>
+                        <input type="password" th:field="*{password}" id="password" name="password" required="true"/>
+                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Empty Error</p>
+                    </div>
+
+                    <div class="pure-controls">
+                        <button type="submit" class="pure-button pure-button-primary">Login User</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="pure-u-1-5 right-column"></div>
+    </div>
+
+    <div th:replace="footer :: footer"></div>
+</body>
+</html>
