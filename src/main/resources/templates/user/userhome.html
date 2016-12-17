@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrar Site</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/pure-min.css"/>
+    <link rel="stylesheet" href="/css/localStyle.css"/>
+</head>
+<body>
+<div th:replace="navbar :: navbar"></div>
+
+<div class="pure-g">
+    <div class="pure-u-1-5 left-column"></div>
+    <div class="pure-u-3-5-70 content-column">
+        <!--/*@thymesVar id="user" type="com.rsl.registrar.domain.User"*/-->
+        <!--/*@thymesVar id="apikey" type="java.lang.String"*/-->
+        <h3>Your Information</h3>
+        <table class="pure-table pure-table-horizontal">
+            <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>User API Key</td>
+                <td th:text="${apikey}"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td th:text="${user.getEmail()}"></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td th:text="${user.getName()}"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td th:text="${user.getPhone()}"></td>
+            </tr>
+            <tr>
+                <td>Fax</td>
+                <td th:text="${user.getFax()}"></td>
+            </tr>
+            <tr>
+                <td>Organization</td>
+                <td th:text="${user.getOrganization()}"></td>
+            </tr>
+            <tr>
+                <td>Addressline1</td>
+                <td th:text="${user.getAddressline1()}"></td>
+            </tr>
+            <tr>
+                <td>Addressline2</td>
+                <td th:text="${user.getAddressline2()}"></td>
+            </tr>
+            <tr>
+                <td>Addressline3</td>
+                <td th:text="${user.getAddressline3()}"></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td th:text="${user.getCity()}"></td>
+            </tr>
+            <tr>
+                <td>State/Province</td>
+                <td th:text="${user.getStateprovince()}"></td>
+            </tr>
+            <tr>
+                <td>Postal Code</td>
+                <td th:text="${user.getPostalcode()}"></td>
+            </tr>
+            <tr>
+                <td>Country Code</td>
+                <td th:text="${user.getCountrycode()}"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a class="pure-button pure-button-primary" href="/user/useredit" style="width: 100%">Edit Your
+                        Profile</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <h3>Your Domains</h3>
+        <!-- todo how to represent array in thymesvar?-->
+        <!--/*@thymesVar id="domains" type="com.rsl.registrar.domain.Domain[]"*/-->
+        <div th:switch="${domains.length > 0}">
+            <span th:case="false">No domains currently registered to this account!</span>
+            <span th:case="true">
+                    <table class="pure-table pure-table-horizontal">
+                        <thead>
+                            <tr>
+                                <th>Domain Name</th>
+                                <th>Created Date</th>
+                                    <th>Updated Date</th>
+                                    <th>Expiration Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="domain : ${domains}">
+                                    <!--/*@thymesVar id="domain" type="com.rsl.registrar.domain.Domain"*/-->
+                                    <td th:text="${domain.domainName}"></td>
+                                    <td th:text="${domain.createdDate}"></td>
+                                    <td th:text="${domain.updatedDate}"></td>
+                                    <td th:text="${domain.expiredDate}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </span>
+        </div>
+        <hr/>
+        <h3>Your Contacts</h3>
+        <!-- todo how to represent array in thymesvar?-->
+        <!--/*@thymesVar id="contacts" type="com.rsl.registrar.domain.UserContactForm[]"*/-->
+        <div th:switch="${contacts.length > 0}">
+            <span th:case="false">No contacts currently registered to this account!</span>
+            <span th:case="true">
+                <table class="pure-table pure-table-horizontal">
+                    <thead>
+                        <tr>
+                            <th>Contact ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Fax</th>
+                            <th>Organization</th>
+                            <th>Addressline1</th>
+                            <th>Addressline2</th>
+                            <th>Addressline3</th>
+                            <th>City</th>
+                            <th>State/Province</th>
+                            <th>Postal Code</th>
+                            <th>Country Code</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="contact : ${contacts}">
+                        <!--/*@thymesVar id="contact" type="com.rsl.registrar.domain.UserContactForm"*/-->
+                            <td th:text="${contact.getId()}"></td>
+                            <td th:text="${contact.getName()}"></td>
+                            <td th:text="${contact.getEmail()}"></td>
+                            <td th:text="${contact.getPhone()} + 'x' + ${contact.getPhoneext()}"></td>
+                            <td th:text="${contact.getFax()} + 'x' + ${contact.getFaxext()}"></td>
+                            <td th:text="${contact.getOrganization()}"></td>
+                            <td th:text="${contact.getAddressline1()}"></td>
+                            <td th:text="${contact.getAddressline2()}"></td>
+                            <td th:text="${contact.getAddressline3()}"></td>
+                            <td th:text="${contact.getCity()}"></td>
+                            <td th:text="${contact.getStateprovince()}"></td>
+                            <td th:text="${contact.getPostalcode()}"></td>
+                            <td th:text="${contact.getCountrycode()}"></td>
+                            <td>
+                                <a class="pure-button pure-button-primary"
+                                   th:href="@{/user/contact/edit/{cid}(cid=${contact.getId()})}">Edit</a>
+                            </td>
+                            <td>
+                                <a class="pure-button pure-button-primary"
+                                   th:attr="onclick='return confirm(\'delete Contact ' + ${contact.getName()} + '?\');'"
+                                   th:href="@{/user/contact/delete/{cid}(cid=${contact.getId()})}">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div th:replace="footer :: footer"></div>
+</body>
+</html>

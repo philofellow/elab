@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Create an Account</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/pure-min.css" />
+    <link rel="stylesheet" href="/css/localStyle.css" />
+</head>
+<body>
+    <div th:replace="navbar :: navbar"></div>
+
+    <div class="pure-g">
+        <div class="pure-u-1-5 left-column"></div>
+        <div class="pure-u-3-5 content-column">
+            <!--/*@thymesVar id="userContactForm" type="com.rsl.registrar.domain.UserContactForm"*/-->
+            <!--/*@thymesVar id="actionType" type="java.lang.String"*/-->
+            <form action="#"
+                  th:action="@{${actionType}}"
+                  th:object="${userContactForm}"
+                  method="post"
+                  class="pure-form pure-form-aligned">
+                <fieldset>
+                    <span th:switch="${actionType.contains('contact/add')}">
+                        <legend th:case="true">Add a Contact (All Fields Required)</legend>
+                        <legend th:case="false">Update a Contact (All Fields Required)</legend>
+                    </span>
+
+                    <span th:switch="${actionType.contains('contact/add')}">
+                        <div class="pure-control-group" th:case="false">
+                            <label for="id">Contact Id</label>
+                            <input type="text" th:value="${userContactForm.getId()}" id="id" name="id" readonly="readonly" />
+                        </div>
+                    </span>
+
+                    <span th:switch="${actionType.contains('contact/add')}">
+                        <div class="pure-control-group" th:case="false">
+                            <label for="registrantid">registrant Id</label>
+                            <input type="text" th:value="${userContactForm.getRegistrantid()}" id="registrantid" name="registrantid" readonly="readonly" />
+                        </div>
+                    </span>
+
+                    <div class="pure-control-group">
+                        <label for="name">Name</label >
+                        <input type="text" th:value="${userContactForm.getName()}" id="name" name="name" placeholder="Name" required="true"/>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="email">Email</label >
+                        <input type="text" th:value="${userContactForm.getEmail()}" id="email" name="email" placeholder="" required="true"/>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="phone">Phone</label >
+                        <input type="text" th:value="${userContactForm.getPhone()}" id="phone" name="phone" placeholder="+1.7031234567" required="true"/>
+                        -
+                        <input type="text" th:field="*{phoneext}" id="phoneext" name="phoneext" placeholder="123"/>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="fax">Fax</label >
+                        <input type="text" th:field="*{fax}" id="fax" name="fax" placeholder="+1.7031234567" required="true"/>
+                        -
+                        <input type="text" th:field="*{faxext}" id="faxext" name="faxext" placeholder="123"/>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="organization">Organization</label >
+                        <input type="text" th:field="*{organization}" id="organization" name="organization" placeholder="abc Inc." required="true"/>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="addressline1">Address</label >
+                        <input type="text" th:field="*{addressline1}" id="addressline1" name="addressline1" placeholder="123 Foobar Lane" required="true"/>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="addressline2"></label >
+                        <input type="text" th:field="*{addressline2}" id="addressline2" name="addressline2"/>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="addressline3"></label >
+                        <input type="text" th:field="*{addressline3}" id="addressline3" name="addressline3"/>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="city">City</label >
+                        <input type="text" th:field="*{city}" id="city" name="city" required="true"/>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="stateprovince">State/Province</label >
+                        <input type="text" th:field="*{stateprovince}" id="stateprovince" name="stateprovince" required="true"/>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="postalcode">Postal Code</label >
+                        <input type="text" th:field="*{postalcode}" id="postalcode" name="postalcode" required="true"/>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="countrycode">Country Code</label >
+                        <input type="text" th:field="*{countrycode}" id="countrycode" name="countrycode" required="true"/>
+                    </div>
+
+                    <div class="pure-controls">
+                        <button type="submit" class="pure-button pure-button-primary">
+                            <span th:switch="${actionType.contains('contact/add')}">
+                                <span th:case="true">Add Contact</span>
+                                <span th:case="false">Update Contact</span>
+                            </span>
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="pure-u-1-5 right-column"></div>
+    </div>
+
+    <div th:replace="footer :: footer"></div>
+</body>
+</html>

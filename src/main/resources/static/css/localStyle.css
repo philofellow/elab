@@ -1,0 +1,111 @@
+.nav-bar-wrapper {
+    background-color: #0081D8;/*#ffd090;*/
+    margin-bottom: 1em;
+    -webkit-font-smoothing: antialiased;
+    height: 2.1em;
+    overflow: hidden;
+    -webkit-transition: height 0.5s;
+    -moz-transition: height 0.5s;
+    -ms-transition: height 0.5s;
+    transition: height 0.5s;
+}
+
+.nav-bar-wrapper img {
+    padding: 2px;
+    vertical-align: middle;
+}
+
+.content-column {
+
+}
+
+/**
+* Below this point is CSS for the footer
+*/
+footer {
+    font-size: inherit;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    position: absolute;
+    display: block;
+}
+
+.clearfix:after, .clearfix:before {
+    display: table;
+    content: " ";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+footer .grid {
+    max-width: 1080px;
+    margin: 0px auto;
+}
+
+footer .legal {
+    background: #46545D none repeat scroll 0% 0%;
+}
+
+footer .legal nav {
+    margin-left: 4.25926%;
+    float: left;
+    display: block;
+    margin-right: 2.22222%;
+    width: 91.4815%;
+}
+
+footer .legal nav a {
+    text-align: center;
+    color: #ffffff;
+    text-transform: uppercase;
+    line-height: 10.2em;
+    float: left;
+    display: block;
+    margin-right: 2.42915%;
+    width: 17.0567%;
+}
+
+footer a {
+    width: 100%;
+    display: block;
+    font-family: sans-serif;
+    font-size: 10px;
+    line-height: 2.1em;
+    padding: 0.7em 0em;
+    color: #F6F6F6;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+
+
+footer .legal nav:last-child {
+    margin-right: 0px;
+}
+
+footer .copyright {
+    background: #46545D none repeat scroll 0% 0%;
+    color: #D1E0EB;
+    text-align: center;
+    border-top: 1px solid #4E5F69;
+    padding-bottom: 2.5em;
+    padding-top: 2.5em;
+    font-size: 10px;
+}
+
+footer p {
+    font-family: "Lucida Sans";
+    font-size: 10px;
+    color: #ffffff;
+    font-weight: normal;
+    text-align: center;
+    line-height: 16px;
+    width: 100%;
+    display: block;
+    margin-top: 0em;
+    margin-bottom: 0.4em;
+    background: #46545d;
+}
