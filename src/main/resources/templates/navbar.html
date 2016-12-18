@@ -3,7 +3,6 @@
 <body>
 
     <div class="pure-menu pure-menu-horizontal nav-bar-wrapper" th:fragment="navbar">
-        <img src="/images/vrsn-logo-sm.png"/>
         <a href="/" class="pure-menu-heading pure-menu-link">Registrar-UI</a>
         <!--/*@thymesVar id="session" type="javax.servlet.http.HttpSession"*/-->
         <ul class="pure-menu-list" th:switch="${session.containsKey('username')}">
