@@ -12,81 +12,43 @@
     <div class="pure-g">
         <div class="pure-u-1-5 left-column"></div>
         <div class="pure-u-3-5 content-column">
-            <!--/*@thymesVar id="userCreateForm" type="com.rsl.registrar.domain.UserCreateForm"*/-->
+            <!--/*@thymesVar id="form" type="com.zyans.elab.domain.form.UserForm"*/-->
             <!--/*@thymesVar id="actionType" type="java.lang.String"*/-->
             <form action="#"
                   th:action="@{${actionType}}"
-                  th:object="${userCreateForm}"
+                  th:object="${form}"
                   method="post"
                   class="pure-form pure-form-aligned">
                 <fieldset>
                     <span th:switch="${actionType.contains('signup')}">
-                        <legend th:case="true">Create User (All Fields Required)</legend>
-                        <legend th:case="false">Edit Profile (All Fields Required)</legend>
+                        <legend th:case="true">Create User</legend>
+                        <legend th:case="false">Edit Profile</legend>
+                    </span>
+
+                    <span th:switch="${actionType.contains('signup')}">
+                        <div class="pure-control-group" th:case="true">
+                            <label for="username">User Name</label >
+                            <input type="text" th:value="${form.getUsername()}" id="username" name="username" placeholder="test" required="true"/>
+                        </div>
+                        <div class="pure-control-group" th:case="false">
+                            <label for="username">User Name</label >
+                            <input type="text" th:value="${form.getUsername()}" id="username" name="username" placeholder="test" required="true" readonly="readonly"/>
+                        </div>
                     </span>
 
                     <div class="pure-control-group">
-                        <label for="name">Name</label >
-                        <input type="text" th:value="${userCreateForm.getName()}" id="name" name="name" placeholder="Full Name" required="true"/>
+                        <label for="password">Password</label>
+                        <input type="password" th:value="${form.getPassword()}" id="password" name="password" required="true"/>
                     </div>
 
                     <div class="pure-control-group">
-                        <label for="phone">Phone</label >
-                        <input type="text" th:value="${userCreateForm.getPhone()}" id="phone" name="phone" placeholder="1-123-456-7890" required="true"/>
-                    </div>
-
-                    <div class="pure-control-group">
-                        <label for="fax">Fax</label >
-                        <input type="text" th:value="${userCreateForm.getFax()}" id="fax" name="fax" placeholder="1-123-456-7890" required="true"/>
+                        <label for="email">Email</label>
+                        <input type="email" th:value="${form.getEmail()}" id="email" name="email" required="true"/>
                     </div>
 
                     <div class="pure-control-group">
                         <label for="organization">Organization</label >
-                        <input type="text" th:value="${userCreateForm.getOrganization()}" id="organization" name="organization" placeholder="abc Inc." required="true"/>
-                    </div>
-
-                    <div class="pure-control-group">
-                        <label for="addressline1">Address</label >
-                        <input type="text" th:value="${userCreateForm.getAddressline1()}" id="addressline1" name="addressline1" placeholder="123 Foobar Lane" required="true"/>
-                    </div>
-                    <div class="pure-control-group">
-                        <label for="addressline2"></label >
-                        <input type="text" th:value="${userCreateForm.getAddressline2()}" id="addressline2" name="addressline2"/>
-                    </div>
-                    <div class="pure-control-group">
-                        <label for="addressline3"></label >
-                        <input type="text" th:value="${userCreateForm.getAddressline3()}" id="addressline3" name="addressline3"/>
-                    </div>
-                    <div class="pure-control-group">
-                        <label for="city">City</label >
-                        <input type="text" th:value="${userCreateForm.getCity()}" id="city" name="city" required="true"/>
-                    </div>
-                    <div class="pure-control-group">
-                        <label for="stateprovince">State/Province</label >
-                        <input type="text" th:value="${userCreateForm.getStateprovince()}" id="stateprovince" name="stateprovince" required="true"/>
-                    </div>
-                    <div class="pure-control-group">
-                        <label for="postalcode">Postal Code</label >
-                        <input type="text" th:value="${userCreateForm.getPostalcode()}" id="postalcode" name="postalcode" required="true"/>
-                    </div>
-                    <div class="pure-control-group">
-                        <label for="countrycode">Country Code</label >
-                        <input type="text" th:value="${userCreateForm.getCountrycode()}" id="countrycode" name="countrycode" required="true"/>
-                    </div>
-
-                    <span th:switch="${actionType.contains('signup')}">
-                        <div class="pure-control-group" th:case="true">
-                            <label for="email">Email Address</label>
-                            <input type="email" th:value="${userCreateForm.getEmail()}" id="email" name="email" placeholder="foobar@foo.com" required="true"/>
-                        </div>
-                        <div class="pure-control-group" th:case="false">
-                            <label for="email">Email Address</label>
-                            <input type="email" th:value="${userCreateForm.getEmail()}" id="email" name="email" placeholder="foobar@foo.com" required="true" readonly="readonly" />
-                        </div>
-                    </span>
-                    <div class="pure-control-group">
-                        <label for="password">Password</label>
-                        <input type="password" th:value="${userCreateForm.getPassword()}" id="password" name="password" required="true"/>
+                        <input type="text" th:value="${form.getOrganization()}" id="organization" name="organization" placeholder="abc Inc." required="true"/>
                     </div>
 
                     <div class="pure-controls">
