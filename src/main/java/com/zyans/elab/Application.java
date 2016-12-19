@@ -1,4 +1,4 @@
-package com.rsl.registrar;
+package com.zyans.elab;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

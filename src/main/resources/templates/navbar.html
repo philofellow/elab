@@ -3,17 +3,15 @@
 <body>
 
     <div class="pure-menu pure-menu-horizontal nav-bar-wrapper" th:fragment="navbar">
-        <img src="/images/vrsn-logo-sm.png"/>
         <a href="/" class="pure-menu-heading pure-menu-link">Registrar-UI</a>
         <!--/*@thymesVar id="session" type="javax.servlet.http.HttpSession"*/-->
-        <ul class="pure-menu-list" th:switch="${session.containsKey('apikey')}">
+        <ul class="pure-menu-list" th:switch="${session.containsKey('username')}">
             <span th:case="false">
                 <li class="pure-menu-item"><a href="/login" class="pure-menu-link">Sign In</a></li>
                 <li class="pure-menu-item"><a href="/signup" class="pure-menu-link">Create an Account</a></li>
             </span>
             <span th:case="true">
                 <li class="pure-menu-item"><a href="/user/userhome" class="pure-menu-link">User Home</a></li>
-                <li class="pure-menu-item"><a href="/user/contact/add" class="pure-menu-link">Add a Contact</a></li>
                 <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
             </span>
         </ul>

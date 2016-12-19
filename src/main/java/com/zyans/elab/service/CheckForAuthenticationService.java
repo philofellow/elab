@@ -1,4 +1,4 @@
-package com.rsl.registrar.service;
+package com.zyans.elab.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -6,15 +6,12 @@ import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Created by akaizer on 11/15/16.
- */
 @Service
 public class CheckForAuthenticationService {
     @Value("${error.accessError}")
     private String errorAccess;
 
-    @Value("${frontend.view.error}")
+    @Value("${view.error}")
     private String viewError;
 
     /**
@@ -23,7 +20,7 @@ public class CheckForAuthenticationService {
      * @return
      */
     public boolean isUserLoggedIn( HttpServletRequest request ) {
-        if (request.getSession().getAttribute("apikey") == null) {
+        if (request.getSession().getAttribute("username") == null) {
             return false;
         }
         return true;
