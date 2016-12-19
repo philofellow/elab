@@ -51,7 +51,7 @@ public class UserHomeController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "${frontend.rest.useredit}", method = RequestMethod.POST)
+    @RequestMapping(value = "${rest.useredit}", method = RequestMethod.POST)
     public String editInformation(HttpServletRequest request, @Valid @ModelAttribute("form") UserForm form, Model model) {
         if (!checkForAuthenticationService.isUserLoggedIn(request)) {
             LOGGER.debug("An unauthenticated user tried to access an authenticated resource (UserHome)");
@@ -63,7 +63,7 @@ public class UserHomeController {
         return "redirect:" + restUserHome;
     }
 
-    @RequestMapping(value = "${frontend.rest.useredit}", method = RequestMethod.GET)
+    @RequestMapping(value = "${rest.useredit}", method = RequestMethod.GET)
     public String fetchUserEdit(HttpServletRequest request, Model model, @Valid @ModelAttribute("form") UserForm form) {
         if (!checkForAuthenticationService.isUserLoggedIn(request)) {
             LOGGER.debug("An unauthenticated user tried to access an authenticated resource (UserHome)");
@@ -75,7 +75,7 @@ public class UserHomeController {
         return viewUserEdit;
     }
 
-    @RequestMapping(value = "${frontend.rest.userhome}", method = RequestMethod.GET)
+    @RequestMapping(value = "${rest.userhome}", method = RequestMethod.GET)
     public String fetchUserHome(HttpServletRequest request, Model model) {
         if (!checkForAuthenticationService.isUserLoggedIn(request)) {
             LOGGER.debug("An unauthenticated user tried to access an authenticated resource (UserHome)");
