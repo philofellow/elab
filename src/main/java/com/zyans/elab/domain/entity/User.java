@@ -28,10 +28,9 @@ public class User {
     @Column(name = "role", nullable = false)
     private String role = Role.USER;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
-
 
     public String getEmail() {
         return email;
