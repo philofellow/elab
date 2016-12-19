@@ -1,5 +1,6 @@
 package com.zyans.elab.domain;
 
-public enum Role {
-    USER, ADMIN
+public class Role {
+    public final static String ADMIN = "ADMIN";
+    public final static String USER = "USER";
 }

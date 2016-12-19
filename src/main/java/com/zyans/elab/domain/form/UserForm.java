@@ -20,7 +20,7 @@ public class UserForm {
     private String organization;
 
     @NotNull
-    private Role role = Role.USER;
+    private String role = Role.USER;
 
     public String getEmail() {
         return email;
@@ -54,11 +54,11 @@ public class UserForm {
         this.organization = organization;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 

@@ -26,7 +26,7 @@ public class User {
     private String organization;
 
     @Column(name = "role", nullable = false)
-    private Role role;
+    private String role = Role.USER;
 
     public long getId() {
         return id;
@@ -65,11 +65,11 @@ public class User {
         this.organization = organization;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
@@ -80,37 +80,5 @@ public class User {
                 + ", email: " + getEmail()
                 + ", organization: " + getOrganization()
                 + ", role : " + getRole() + ")";
-    }
-
-    /**
-     * This class handles the binding and setting of the login.html page by
-     * containing the necessary user information to be validated to log the user in.
-     *
-     * Created by akaizer on 11/4/16.
-     */
-    public static class UserLoginForm {
-        private String email;
-
-        private String password;
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String toString() {
-            return "Person(Email: " + email + ", Password: " + password + ")";
-        }
     }
 }
