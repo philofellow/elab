@@ -50,7 +50,7 @@ public class SignUpController {
     }
 
     @RequestMapping(value = "${rest.signup}", method = RequestMethod.GET)
-    public String signup(HttpServletRequest request, UserForm form, Model model) {
+    public String signup(HttpServletRequest request, UserForm userForm, Model model) {
         // if the user is already signed in, redirect them to homepage
         if (checkForAuthenticationService.isUserLoggedIn(request)) {
             return "redirect:" + restUserhome;
@@ -61,8 +61,8 @@ public class SignUpController {
     }
 
     @RequestMapping(value = "${rest.signup}", method = RequestMethod.POST)
-    public String signup(@Valid @ModelAttribute("form") UserForm form, Model m, BindingResult result) {
-        LOGGER.debug("Signing up a user: \"{}\"", form);
+    public String signup(@Valid @ModelAttribute("form") UserForm userForm, Model m, BindingResult result) {
+        LOGGER.debug("Signing up a user: \"{}\"", userForm);
         // todo may be add validator here
 
         if(result.hasErrors()) {
@@ -71,7 +71,7 @@ public class SignUpController {
             return viewError;
         }
 
-        userService.create(form);
+        userService.create(userForm);
         return viewAccountCreationSuccess;
     }
 }

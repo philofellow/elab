@@ -1,15 +1,10 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head> 
-    <title>ELab</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/css/pure-min.css" />
-    <link rel="stylesheet" href="/css/localStyle.css" />
+<head th:replace="common/head :: head">
 </head>
 <body>
     <div th:replace="navbar :: navbar"></div>
 
-    <div class="pure-g">
+    <div class="container-fluid">
         <div class="pure-u-1-5 left-column"></div>
         <div class="pure-u-3-5 content-column">
             <p>
