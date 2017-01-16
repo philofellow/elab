@@ -59,7 +59,7 @@ public class UserHomeController {
         }
         LOGGER.debug("Editing a user: \"{}\"", form);
 
-        userService.update(request.getAttribute("username").toString(), form);
+        userService.update(request.getAttribute("email").toString(), form);
         return "redirect:" + restUserHome;
     }
 
@@ -82,7 +82,7 @@ public class UserHomeController {
             return checkForAuthenticationService.accessError(model);
         }
 
-        LOGGER.debug("User={} is fetching their homepage.", request.getSession().getAttribute("username").toString());
+        LOGGER.debug("User={} is fetching their homepage.", request.getSession().getAttribute("email").toString());
 
         // fetch various values to place in the user view
         populateUserValuesInView(request, model);
@@ -97,8 +97,8 @@ public class UserHomeController {
      * @param model
      */
     private void populateUserValuesInView(HttpServletRequest request, Model model) {
-        String username = request.getSession().getAttribute("username").toString();
-        LOGGER.debug("User={} is fetching their profile.", username);
-        model.addAttribute("user", userService.getUserByUsername(username).get());
+        String email = request.getSession().getAttribute("email").toString();
+        LOGGER.debug("User={} is fetching their profile.", email);
+        model.addAttribute("user", userService.getUserByEmail(email));
     }
 }

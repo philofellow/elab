@@ -20,7 +20,7 @@ public class CheckForAuthenticationService {
      * @return
      */
     public boolean isUserLoggedIn( HttpServletRequest request ) {
-        if (request.getSession().getAttribute("username") == null) {
+        if (request.getSession().getAttribute("email") == null) {
             return false;
         }
         return true;

@@ -12,14 +12,14 @@ public class User {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
-    @Column(name = "username", nullable = false, unique = true)
-    private String username;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     // todo use hash instead of plain text
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "organization", nullable = false)
@@ -40,12 +40,12 @@ public class User {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -74,7 +74,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Person(username: " + getUsername()
+        return "Person(name: " + getName()
                 + ", password: " + getPassword()
                 + ", email: " + getEmail()
                 + ", organization: " + getOrganization()

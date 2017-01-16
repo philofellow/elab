@@ -11,7 +11,7 @@ public class UserForm {
     private String email;
 
     @NotEmpty
-    private String username;
+    private String name;
 
     @NotEmpty @Size(min = 6, max = 12)
     private String password;
@@ -30,12 +30,12 @@ public class UserForm {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -63,7 +63,7 @@ public class UserForm {
     }
 
     public String toString() {
-        return "Person(username: " + getUsername()
+        return "Person(name: " + getName()
                 + ", password: " + getPassword()
                 + ", email: " + getEmail()
                 + ", organization: " + getOrganization()

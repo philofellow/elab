@@ -56,13 +56,13 @@ public class LoginController {
 
         LOGGER.debug("Processing form \"{}\" login request.", loginForm);
 
-        User user = userService.getUserByUsername(loginForm.getUsername()).get();
+        User user = userService.getUserByEmail(loginForm.getEmail());
         if (!user.getPassword().equals(loginForm.getPassword())) {
                 m.addAttribute("error", "Login failed, password is incorrect.");
                 return viewError;
         }
 
-        request.getSession().setAttribute("username", user.getUsername());
+        request.getSession().setAttribute("email", user.getEmail());
         request.getSession().setAttribute("role", user.getRole());
         return "redirect:" + restUserHome;
     }

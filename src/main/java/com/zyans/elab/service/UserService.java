@@ -27,38 +27,36 @@ public class UserService {
         return Optional.ofNullable(userRepository.findOne(id));
     }
 
-    public Optional<User> getUserByUsername(String username) {
-        LOGGER.debug("Getting user by username={}", username);
-        return userRepository.findOneByUsername(username);
+    public User getUserByEmail(String email) {
+        LOGGER.debug("Getting user by email={}", email);
+        return userRepository.findOneByEmail(email).
+                orElseThrow(()->new NoSuchElementException("user with email" + email + "not exist"));
     }
 
-    public long getIdByUsername(String username) {
-        LOGGER.debug("Getting id by username={}", username);
-        User user = getUserByUsername(username)
-                .orElseThrow(() -> new NoSuchElementException(String.format("User=%s not found", username)));
-        return user.getId();
+    public long getIdByEmail(String email) {
+        LOGGER.debug("Getting user by email={}", email);
+        return getUserByEmail(email).getId();
     }
 
-    public void deleteUser(String username) {
-        User user = getUserByUsername(username)
-                .orElseThrow(() -> new NoSuchElementException(String.format("User=%s not found", username)));
+    public void deleteUser(String email) {
+        User user = getUserByEmail(email);
         userRepository.delete(user.getId());
     }
 
     public void create(UserForm form) {
         User user = new User();
         user.setEmail(form.getEmail());
-        user.setUsername(form.getUsername());
+        user.setEmail(form.getEmail());
         user.setPassword(form.getPassword());
         user.setOrganization(form.getOrganization());
         user.setRole(form.getRole());
         userRepository.save(user);
     }
 
-    public void update(String username, UserForm form) {
-        User user = userRepository.findOneByUsername(username).get();
+    public void update(String email, UserForm form) {
+        User user = getUserByEmail(email);
         user.setEmail(form.getEmail());
-        user.setUsername(form.getUsername());
+        user.setEmail(form.getEmail());
         user.setPassword(form.getPassword());
         user.setOrganization(form.getOrganization());
         user.setRole(form.getRole());

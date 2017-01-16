@@ -7,17 +7,17 @@ import javax.validation.constraints.*;
 public class LoginForm {
 
     @NotEmpty
-    private String username;
+    private String email;
 
     @NotEmpty @Size(min = 6, max = 12)
     private String password;
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -29,7 +29,7 @@ public class LoginForm {
     }
 
     public String toString() {
-        return "User(username: " + getUsername() + ", password: " + getPassword() + ")";
+        return "User(email: " + getEmail() + ", password: " + getPassword() + ")";
     }
 
 }
