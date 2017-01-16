@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-
     <div class="pure-menu pure-menu-vertical nav-bar-wrapper" th:fragment="leftbar">
         <!--/*@thymesVar id="session" type="javax.servlet.http.HttpSession"*/-->
         <ul class="pure-menu-list" th:switch="${session.containsKey('username')}">

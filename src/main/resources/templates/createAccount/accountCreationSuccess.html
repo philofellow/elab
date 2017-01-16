@@ -1,21 +1,17 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Account Creation Success</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/css/pure-min.css" />
-    <link rel="stylesheet" href="/css/localStyle.css" />
+<head th:replace="common/head :: head">
 </head>
 <body>
     <div th:replace="navbar :: navbar"></div>
 
 
-    <div class="pure-g">
-        <div class="pure-u-1-5 left-column"></div>
-        <div class="pure-u-3-5 content-column">
+    <div class="container">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
             <p>Success - your account has been created!  You can <a href="/login">login here</a>.</p>
         </div>
-        <div class="pure-u-1-5 right-column"></div>
+        <div class="col-md-4"></div>
     </div>
 
     <div th:replace="footer :: footer"></div>

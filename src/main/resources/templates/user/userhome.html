@@ -1,20 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Registrar Site</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="/css/pure-min.css"/>
-    <link rel="stylesheet" href="/css/localStyle.css"/>
+<head th:replace="common/head :: head">
 </head>
 <body>
 <div th:replace="navbar :: navbar"></div>
 
-<div class="pure-g">
-    <div class="pure-u-1-12 left-column">
-        <div th:replace="leftbar :: leftbar"></div>
-    </div>
-    <div class="pure-u-1-5 left-column"></div>
-    <div class="pure-u-3-5-70 content-column">
+<div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
         <!--/*@thymesVar id="user" type="com.zyans.elab.domain.entity.User"*/-->
         <h3>Your Information</h3>
         <table class="pure-table pure-table-horizontal">
@@ -46,6 +39,7 @@
             </tbody>
         </table>
     </div>
+    <div class="col-md-4"></div>
 </div>
 
 <div th:replace="footer :: footer"></div>
