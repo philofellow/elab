@@ -2,20 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 
-    <div class="pure-menu pure-menu-horizontal nav-bar-wrapper" th:fragment="navbar">
-        <a href="/" class="pure-menu-heading pure-menu-link">ELab</a>
-        <!--/*@thymesVar id="session" type="javax.servlet.http.HttpSession"*/-->
-        <ul class="pure-menu-list" th:switch="${session.containsKey('username')}">
-            <span th:case="false">
-                <li class="pure-menu-item"><a href="/login" class="pure-menu-link">Sign In</a></li>
-                <li class="pure-menu-item"><a href="/signup" class="pure-menu-link">Create an Account</a></li>
+<nav class="navbar navbar-default" th:fragment="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">ELab</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <span th:switch="${session.containsKey('username')}">
+                <span th:case="false">
+                    <ul class="nav navbar-nav">
+                        <li class="pure-menu-item"><a href="/login" class="pure-menu-link">Sign In</a></li>
+                        <li class="pure-menu-item"><a href="/signup" class="pure-menu-link">Create an Account</a></li>
+                    </ul>
+                </span>
+                <span th:case="true">
+                    <ul class="nav navbar-nav">
+                        <li class="pure-menu-item"><a href="/user/userhome" class="pure-menu-link">User Home</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
+                    </ul>
+                </span>
             </span>
-            <span th:case="true">
-                <li class="pure-menu-item"><a href="/user/userhome" class="pure-menu-link">User Home</a></li>
-                <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
-            </span>
-        </ul>
-    </div>
-
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
 </body>
 </html>
