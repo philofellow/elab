@@ -13,7 +13,7 @@
             <a class="navbar-brand" href="/">ELab</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <span th:switch="${session.containsKey('username')}">
+            <span th:switch="${session.containsKey('email')}">
                 <span th:case="false">
                     <ul class="nav navbar-nav">
                         <li class="pure-menu-item"><a href="/login" class="pure-menu-link">Sign In</a></li>
